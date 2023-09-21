@@ -1,12 +1,16 @@
 public class Entity {
-    private String name;
-    private int health;
-    private int attack;
+    protected String name;
+    protected int health;
+    protected int attack;
 
     public Entity(String name, int health, int attack){
         this.name = name;
         this.health = health;
         this.attack = attack;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getName() {
