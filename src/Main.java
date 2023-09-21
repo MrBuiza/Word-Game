@@ -36,8 +36,6 @@ public class Main {
         String name = input.next();
         player1.setName(name);
 
-        System.out.println(player1.toString());
-
         System.out.println("You are a " + chosenClass + " and your name is " + player1.getName() + "." +
                 " It is time to begin your journey. Let me take you back 600 years to where it all started... " +
                 "You are healthy. Here you can see your health, take care it doesn't go to low: " + player1.getHealth());
