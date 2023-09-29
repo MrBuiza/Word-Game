@@ -1,44 +1,8 @@
-import java.util.Scanner;
-
 public class Main {
     public static void main(String[] args) {
+        Game start = new Game();
+        start.gameplay();
 
-        Scanner input = new Scanner(System.in);
-        String chosenClass = "";
-        Entity player1 = null;
-
-        while (true) {
-            System.out.println("Please enter number 1, 2 or 3 to choose from these classes: 1)Warrior 2)Medic 3)Archer");
-            chosenClass = input.next();
-
-            if (chosenClass.equals("1")) {
-                System.out.println("You have chosen the Warrior, may your courage lead you to victory.");
-                player1 = new Warrior("", 100, 10);
-                break;
-
-            } else if (chosenClass.equals("2")) {
-                System.out.println("You have chosen the Medic, may your hands be blessed with life.");
-                player1 = new Medic("",150, 5);
-                break;
-
-            } else if (chosenClass.equals("3")) {
-                System.out.println("You have chosen the Archer, may the wind favour you and your aim be true.");
-                player1 = new Archer("", 70, 7);
-                break;
-
-            } else {
-                System.out.println("You have not entered a valid option.");
-
-            }
-        }
-
-        System.out.println("What would you like to be called?");
-        String name = input.next();
-        player1.setName(name);
-
-        System.out.println("You are a " + chosenClass + " and your name is " + player1.getName() + "." +
-                " It is time to begin your journey. Let me take you back 600 years to where it all started... " +
-                "You are healthy. Here you can see your health, take care it doesn't go to low: " + player1.getHealth());
     }
 
 }
