@@ -18,6 +18,7 @@ public class Game {
         // Set the scenario/tutorial/lore and build up to the players first fight
         // Create a merchant entity so that the player can interact with them
         // Create an enemy for the player to face off against
+        // Change code for apple and orange items to suit all random items. Lines 28 and 29...
 
         while (true) {
 
