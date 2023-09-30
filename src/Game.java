@@ -6,6 +6,7 @@ public class Game {
     public void gameplay () {
         Scanner input = new Scanner(System.in);
         Dialogue dialogue = new Dialogue();
+
         Scenario scenarioShop = new Scenario();
 
         Entity player1 = createCharacter(input);
@@ -14,6 +15,7 @@ public class Game {
         Item randomItem = createRandomItem();
         dialogue.gameIntro(player1, merchantName);
         scenarioShop.startShop(input, player1, merchantName, randomItem);
+
         dialogue.merchantDialogue(player1, randomItem, merchantName);
 
         //TODO: Create a few more methods to shorten the code in main
@@ -21,8 +23,6 @@ public class Game {
         // Create a merchant entity so that the player can interact with them
         // Create an enemy for the player to face off against
         // Change code for apple and orange items to suit all random items. Lines 28 and 29...
-
-
     }
 
     public Entity createCharacter(Scanner input){
