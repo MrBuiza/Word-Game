@@ -6,7 +6,8 @@ public class Dialogue {
                 player1.getName() + ", you are in a town called Ribberry. Your stomach growls from hunger.\n" +
                 "You walk past a stranger carrying goods. He stops to ask you something...");
 
-        System.out.println("Stranger Merchant: Hello friend, my name is " + merchantName + ". Could I interest you in some fresh products?\n");
+        System.out.println("Stranger Merchant: Hello friend, my name is " + merchantName + ". Could I interest you in some fresh products?");
+
     }
     public void merchantDialogue(Entity player1, Item item, String merchantName) {
         System.out.println("Merchant " + merchantName + ":  Excellent! I have, here with me, some freshly picked " + item.getItemName().toLowerCase() + "s." +
