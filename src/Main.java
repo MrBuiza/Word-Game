@@ -4,8 +4,8 @@ public class Main {
         start.gameplay();
 
     }
-
 }
+
 
 //Create an inventory. Add a coins variable and each class starts with a set number of coins.
 //Create an NPC that sells apples. The player is asked to buy an apple.

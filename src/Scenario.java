@@ -1,50 +1,32 @@
-import java.util.Scanner;
-
 public class Scenario {
-    public void startShop(Scanner input, Entity player1, String merchantName, Item item){
-        while (true) {
+    public void gameIntro(Entity player1, String merchantName) {
+        System.out.println(" /Year 1597/\n" +
+                "Ribberry Town\n" +
+                "You are healthy. Here you can see your health when it is effected, take care it doesn't go to low:\n" +
+                "Player health = " + player1.getHealth() + "\n" +
+                player1.getName() + ", you are in a town called Ribberry. Your stomach growls from hunger.\n" +
+                "You walk down the bustling main street filled with local merchants, workers and travellers." +
+                "You walk past a stranger carrying goods. He stops to ask you something...");
 
-            System.out.println("Would you like to buy from this merchant? Enter 'yes' or 'no' to proceed");
-            String decideShop = input.next();
+        System.out.println("Stranger Merchant: Hello friend, my name is " + merchantName + ". Could I interest you in some fresh products?");
 
-            int amount;
-
-            if (decideShop.equals("yes")) {
-
-                System.out.println("How many would you like? Enter an amount from 1 to 20 or type 'exit' to quit shopping.");
-                amount = input.nextInt();
-                System.out.println("Cost for " + amount + " " + item.getItemName().toLowerCase() + "(s): " + item.getValue() * amount + "g\n" +
-                        "Do you want to purchase " + amount + " " + item.getItemName().toLowerCase() + "s?\n" +
-                        "Enter 'yes' or 'no' to continue...");
-
-                String confirm = input.next();
-
-                if (confirm.equals("yes")) {
-
-                    player1.addToInventory(item, amount);
-                    System.out.println("You have purchased " + amount + " " + item.getItemName().toLowerCase() + "s.");
-                    player1.setCoins(player1.getCoins() - (item.getValue() * amount));
-
-                    System.out.println(item.getValue() * amount + " coins removed. You now have " + player1.getCoins() + " coins.");
-                    System.out.println("In your inventory you have " + player1.getInventory());
-                    break;
-                } else if (confirm.equals("no")) {
-                    System.out.println("You don't want that many? Alright then.");
-
-                } else if (confirm.equals("exit")) {
-                    System.out.println("Merchant " + merchantName + ": Changed your mind did you? Your loss " + player1.getType());
-                    break;
-                } else {
-                    System.out.println("I don't understand that. Let's try again shall we?");
-                }
-
-            } else if (decideShop.equals("no")) {
-                System.out.println("Merchant " + merchantName + ": Suit yourself " + player1.getType().toLowerCase() + ", You will not find goods this fresh anywhere else...");
-                break;
-            } else {
-                System.out.println("Merchant " + merchantName + ": I don't understand... Do you want to buy something?");
-            }
-
-        }
     }
+
+    public void tutorial(){
+
+    }
+
+    public void scenario1(Entity player1, String merchatName) {
+        System.out.println("You leave the merchant and continue down the path until you reach a suspicious alleyway..." +
+                "The alleyway is dark and eerily quiet. Not a soul in sight. You must pass through to reach your destination" +
+                "As you take a few dozen steps, a band of thugs begin to surround you from in front and behind..." +
+                "Thug 1: Looks like we got a live one here fellas. How much d'ya think this one has?" +
+                player1.getName() + ": More than this is worth for you." +
+                "The thugs look at one another and begin laughing increasingly louder." +
+                "Thug1: Don't tell me you're a bloody hero. We've got no time for heroes mate.. Tell ya what," +
+                "I'll let the boys sit out for this one and teach ya a lesson meself. Draw your weapon...");
+    }
+
+
+   // public void
 }
