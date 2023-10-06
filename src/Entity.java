@@ -1,4 +1,6 @@
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Random;
 
 public class Entity {
     protected String type;
@@ -21,6 +23,17 @@ public class Entity {
         }
     }
 
+    public static String createRandomName() {
+        ArrayList<String> namesList = new ArrayList<>();
+        namesList.add("Peter");
+        namesList.add("John");
+        namesList.add("Matthew");
+        namesList.add("Paul");
+        Random rand = new Random();
+        int randomise = rand.nextInt(namesList.size());
+        return namesList.get(randomise);
+    }
+
     public HashMap<Item, Integer> getInventory() {
         return inventory;
     }
@@ -38,7 +51,6 @@ public class Entity {
     }
 
     public String setName(String name) {
-        this.name = name;
         return name;
     }
 

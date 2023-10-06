@@ -14,7 +14,7 @@ public class Game {
 
         createName(input, player1);                                         // A method is called that prompts a user to create their desired hero's name
 
-        String merchantName = createRandomName(merchant);                           // Calling a method which creates and chooses a random name for a merchant name to trade with
+        String merchantName = Entity.createRandomName();                           // Calling a method which creates and chooses a random name for a merchant name to trade with
 
         Item randomItem = createRandomItem();                               // This calls a method that randomises an item for a merchant to sell
 
@@ -79,17 +79,6 @@ public class Game {
         return itemList.get(randomise);
     }
 
-    public String createRandomName(Entity merchant) {
-        ArrayList<String> namesList = new ArrayList<>();
-        namesList.add("Peter");
-        namesList.add("John");
-        namesList.add("Matthew");
-        namesList.add("Paul");
-        Random rand = new Random();
-        int randomise = rand.nextInt(namesList.size());
-        return merchant.setName(namesList.get(randomise));
-
-    }
     public Entity createNPC() {
         ArrayList<Entity> npcList = new ArrayList<>();
         Entity thug1 = new Warrior("Warrior", "Thug", 90, 160);
@@ -117,6 +106,6 @@ public class Game {
     }
 
     public Entity createMerchant() {
-        return new Merchant("merchant", "", 100, 20);
+        return new Merchant("merchant", Entity.createRandomName(), 100, 20);
     }
 }
