@@ -1,3 +1,4 @@
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Event {
@@ -7,7 +8,7 @@ public class Event {
             System.out.println("Would you like to buy from this merchant? Enter 'yes' or 'no' to proceed");
             String decideShop = input.next();
 
-            int amount;
+            int amount = 0;
 
             if (decideShop.equals("yes")) {
 
@@ -18,7 +19,12 @@ public class Event {
                         "Cost for 1 " + item.getItemName().toLowerCase() + ": " + item.getValue() + "g" + "\n" +
                         "How many would you like? Enter an amount from 1 to 20 or type 'exit' to quit shopping.");
 
-                amount = input.nextInt();
+                try {
+                    amount = input.nextInt();
+                }
+                catch (InputMismatchException e){
+                    System.out.println("You need to enter a number between 1 and 20");
+                }
 
                 System.out.println("Cost for " + amount + " " + item.getItemName().toLowerCase() + "(s): " + item.getValue() * amount + "g\n" +
                         "Do you want to purchase " + amount + " " + item.getItemName().toLowerCase() + "s?\n" +
