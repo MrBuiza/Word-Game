@@ -7,12 +7,14 @@ public class Game {
         Scanner input = new Scanner(System.in);
         Scenario dialogue = new Scenario();
         Event scenarioShop = new Event();
+
         Entity player1 = createCharacter(input);
+        Entity merchant = createMerchant();
         Entity npc = createNPC();
 
         createName(input, player1);                                         // A method is called that prompts a user to create their desired hero's name
 
-        String merchantName = createRandomName();                           // Calling a method which creates and chooses a random name for a merchant name to trade with
+        String merchantName = Entity.createRandomName();                           // Calling a method which creates and chooses a random name for a merchant name to trade with
 
         Item randomItem = createRandomItem();                               // This calls a method that randomises an item for a merchant to sell
 
@@ -24,12 +26,15 @@ public class Game {
 
        createNPC();                                                         // Calling a method that creates an NPC for the main characters first fight!
 
+        System.out.println(merchant.getName());
+        System.out.println(merchant.getType());
+        System.out.println(merchant.getCoins());
 
-        //TODO: Create a few more methods to shorten the code in main
-        // Set the scenario/tutorial/lore and build up to the players first fight
-        // Create a merchant entity so that the player can interact with them
-        // Create an enemy for the player to face off against
-        // Change code for apple and orange items to suit all random items. Lines 28 and 29...
+
+
+        //TODO: Create a merchant entity so that the player can interact with them through buy/sell actions
+        // Each merchant must have their inventory functioning when the player buys and/or sells items to/from them
+
     }
 
     public Entity createCharacter(Scanner input) {
@@ -74,16 +79,6 @@ public class Game {
         return itemList.get(randomise);
     }
 
-    public String createRandomName() {
-        ArrayList<String> namesList = new ArrayList<>();
-        namesList.add("Peter");
-        namesList.add("John");
-        namesList.add("Matthew");
-        namesList.add("Paul");
-        Random rand = new Random();
-        int randomise = rand.nextInt(namesList.size());
-        return namesList.get(randomise);
-    }
     public Entity createNPC() {
         ArrayList<Entity> npcList = new ArrayList<>();
         Entity thug1 = new Warrior("Warrior", "Thug", 90, 160);
@@ -108,5 +103,9 @@ public class Game {
         else {
             System.out.println("Invalid command");
         }
+    }
+
+    public Entity createMerchant() {
+        return new Merchant("merchant", Entity.createRandomName(), 100, 20);
     }
 }
