@@ -24,25 +24,9 @@ public class Event {
                         "Do you want to purchase " + amount + " " + item.getItemName().toLowerCase() + "s?\n" +
                         "Enter 'yes' or 'no' to continue...");
 
-                String confirm = input.next();
-
-                if (confirm.equals("yes")) {
-
-                    player1.addToInventory(item, amount);
-                    System.out.println("You have purchased " + amount + " " + item.getItemName().toLowerCase() + "s.");
-                    player1.setCoins(player1.getCoins() - (item.getValue() * amount));
-
-                    System.out.println(item.getValue() * amount + " coins removed. You now have " + player1.getCoins() + " coins.");
-                    System.out.println("In your inventory you have " + player1.getInventory());
+                boolean purchased = confirmPurchase(amount, player1, input, item, merchantName);
+                if (purchased) {
                     break;
-                } else if (confirm.equals("no")) {
-                    System.out.println("You don't want that many? Alright then.");
-
-                } else if (confirm.equals("exit")) {
-                    System.out.println("Merchant " + merchantName + ": Changed your mind did you? Your loss " + player1.getType());
-                    break;
-                } else {
-                    System.out.println("I don't understand that. Let's try again shall we?");
                 }
 
             } else if (decideShop.equals("no")) {
@@ -58,4 +42,30 @@ public class Event {
     public void firstFight(){
 
     }
+
+    public boolean confirmPurchase(int amount, Entity player1, Scanner input, Item item, String merchantName){
+
+        String confirm = input.next();
+
+        if (confirm.equals("yes")) {
+
+            player1.addToInventory(item, amount);
+            System.out.println("You have purchased " + amount + " " + item.getItemName().toLowerCase() + "s.");
+            player1.setCoins(player1.getCoins() - (item.getValue() * amount));
+
+            System.out.println(item.getValue() * amount + " coins removed. You now have " + player1.getCoins() + " coins.");
+            System.out.println("In your inventory you have " + player1.getInventory());
+            return true;
+        } else if (confirm.equals("no")) {
+            System.out.println("You don't want that many? Alright then.");
+
+        } else if (confirm.equals("exit")) {
+            System.out.println("Merchant " + merchantName + ": Changed your mind did you? Your loss " + player1.getType());
+            return true;
+        } else {
+            System.out.println("I don't understand that. Let's try again shall we?");
+        }
+        return false;
+    }
+
 }
