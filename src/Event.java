@@ -75,7 +75,6 @@ public class Event {
     }
 
     public void useItem(Entity player1, Item item, Scanner input) {
-        item.setHeal(50);
         while (true) {
         System.out.println("Would you like to use " + item.getItemName() + "?\n +" +
                 "Please type yes or no");

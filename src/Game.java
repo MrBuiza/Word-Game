@@ -73,8 +73,8 @@ public class Game {
 
     public Item createRandomItem() {
         ArrayList<Item> itemList = new ArrayList<>();
-        itemList.add(new Item("Orange", 2));
-        itemList.add(new Item("Apple", 3));
+        itemList.add(new Item("Orange", 2, 20));
+        itemList.add(new Item("Apple", 3, 30));
         Random rand = new Random();
         int randomise = rand.nextInt(itemList.size());
         return itemList.get(randomise);
