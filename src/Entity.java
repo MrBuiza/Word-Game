@@ -62,6 +62,10 @@ public class Entity {
         return health;
     }
 
+    public void setHealth(int health){
+        this.health = health;
+    }
+
     public int getAttack() {
         return attack;
     }

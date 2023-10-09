@@ -74,4 +74,26 @@ public class Event {
         return false;
     }
 
+    public void useItem(Entity player1, Item item, Scanner input) {
+        while (true) {
+        System.out.println("Would you like to use " + item.getItemName() + "?\n +" +
+                "Please type yes or no");
+        String confirm = input.nextLine();
+
+            if (confirm.equals("yes")) {
+                player1.setHealth(player1.getHealth() + item.getHeal());
+                System.out.println("You have used the " + item.getItemName());
+                System.out.println("Your health is now " + player1.getHealth());
+                break;
+            } else if (confirm.equals("no")) {
+                System.out.println("The " + item.getItemName() + " will not be used.");
+                System.out.println("Your health is " + player1.getHealth());
+                break;
+            } else {
+                System.out.println("Unrecognised command, please try again.");
+            }
+
+        }
+    }
+
 }

@@ -6,7 +6,7 @@ public class Game {
     public void gameplay() {
         Scanner input = new Scanner(System.in);
         Scenario dialogue = new Scenario();
-        Event scenarioShop = new Event();
+        Event event = new Event();
 
         Entity player1 = createCharacter(input);
         Entity merchant = createMerchant();
@@ -14,26 +14,27 @@ public class Game {
 
         createName(input, player1);                                         // A method is called that prompts a user to create their desired hero's name
 
-        String merchantName = Entity.createRandomName();                           // Calling a method which creates and chooses a random name for a merchant name to trade with
+        String merchantName = Entity.createRandomName();                    // Calling a method which creates and chooses a random name for a merchant name to trade with
 
         Item randomItem = createRandomItem();                               // This calls a method that randomises an item for a merchant to sell
 
         dialogue.gameIntro(player1, merchantName);                          // This outputs dialogue for setting the introduction of the game
 
-        scenarioShop.startShop(input, player1, merchantName, randomItem);   // Plays the introduction to the first shop scenario
+        event.startShop(input, player1, merchantName, randomItem);   // Plays the introduction to the first shop scenario
 
       //  showHealth(input, player1);                                       // Calling a method that shows the players health when they type "show health"
 
        createNPC();                                                         // Calling a method that creates an NPC for the main characters first fight!
 
-        System.out.println(merchant.getName());
-        System.out.println(merchant.getType());
-        System.out.println(merchant.getCoins());
+        event.useItem(player1, randomItem, input);
+
+        //   System.out.println(merchant.getName());
+        //  System.out.println(merchant.getType());
+        //  System.out.println(merchant.getCoins());
 
 
 
-        //TODO: Create a merchant entity so that the player can interact with them through buy/sell actions
-        // Each merchant must have their inventory functioning when the player buys and/or sells items to/from them
+        //TODO: Each merchant must have their inventory functioning when the player buys and/or sells items to/from them
 
     }
 
@@ -72,8 +73,8 @@ public class Game {
 
     public Item createRandomItem() {
         ArrayList<Item> itemList = new ArrayList<>();
-        itemList.add(new Item("Orange", 2));
-        itemList.add(new Item("Apple", 3));
+        itemList.add(new Item("Orange", 2, 20));
+        itemList.add(new Item("Apple", 3, 30));
         Random rand = new Random();
         int randomise = rand.nextInt(itemList.size());
         return itemList.get(randomise);
