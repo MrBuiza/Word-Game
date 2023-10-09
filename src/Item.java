@@ -2,6 +2,15 @@ public class Item {
     protected String itemName;
     protected int value;
 
+    protected int heal;
+
+    public int getHeal() {
+        return heal;
+    }
+
+    public void setHeal(int heal) {
+        this.heal = heal;
+    }
 
     public Item(String itemName, int value) {
         this.itemName = itemName;
