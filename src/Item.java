@@ -3,17 +3,17 @@ public class Item {
     protected int value;
     protected int heal;
 
+    public Item(String itemName, int value, int heal) {
+        this.itemName = itemName;
+        this.value = value;
+        this.heal = heal;
+    }
+
     public int getHeal() {
         return heal;
     }
 
     public void setHeal(int heal) {
-        this.heal = heal;
-    }
-
-    public Item(String itemName, int value, int heal) {
-        this.itemName = itemName;
-        this.value = value;
         this.heal = heal;
     }
 
