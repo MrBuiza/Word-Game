@@ -8,7 +8,7 @@ public class Entity {
     protected int health;
     protected int attack;
     protected int coins = 50;
-    protected HashMap<Item, Integer> inventory = new HashMap<>();
+    protected HashMap<String, InventorySlot> inventory = new HashMap<>();
 
     public Entity(String type, String name, int health, int attack){
         this.type = type;
@@ -18,9 +18,18 @@ public class Entity {
     }
 
     public void addToInventory(Item item, int amount){
-        for (int i = 0; i <amount; i++) {
-            inventory.put(item, amount);
+        InventorySlot currentSlot = new InventorySlot(item, amount);
+        inventory.put(item.getItemName(), currentSlot);
+    }
+
+    public void removeFromInventory(Item item, int amount){
+        if (!inventory.containsKey(item.getItemName())){
+            return;
         }
+        InventorySlot slot = inventory.get(item.getItemName());
+        int newValue = slot.getAmount() - amount;
+        InventorySlot updatedSlot = new InventorySlot(item, newValue);
+        inventory.put(item.getItemName(), updatedSlot);
     }
 
     public static String createRandomName() {
@@ -34,7 +43,7 @@ public class Entity {
         return namesList.get(randomise);
     }
 
-    public HashMap<Item, Integer> getInventory() {
+    public HashMap<String, InventorySlot> getInventory() {
         return inventory;
     }
 
@@ -46,8 +55,12 @@ public class Entity {
         return coins;
     }
 
-    public void setCoins(int coins) {
-        this.coins = coins;
+    /**
+     * This will update the coins based on what's passed through as a parameter
+     * @param coins This will be a positive or negative number
+     */
+    public void updateCoins(int coins) {
+        this.coins += coins;
     }
 
     public void setName(String name) {
