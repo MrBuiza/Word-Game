@@ -46,15 +46,15 @@ public class Game {
 
             if (chosenClass.equals("1")) {
                 System.out.println("You have chosen the Warrior, may your courage lead you to victory.");
-                return new Warrior("Warrior", "", 100, 10);
+                return new Warrior("Warrior", "", 100, 7, 40, 1);
 
             } else if (chosenClass.equals("2")) {
                 System.out.println("You have chosen the Medic, may your hands be blessed with life.");
-                return new Medic("Medic", "", 150, 5);
+                return new Medic("Medic", "", 150, 5, 30, 1);
 
             } else if (chosenClass.equals("3")) {
                 System.out.println("You have chosen the Archer, may the wind favour you and your aim be true.");
-                return new Archer("Archer", "", 70, 7);
+                return new Archer("Archer", "", 70, 10, 20, 1);
 
             } else {
                 System.out.println("You have not entered a valid option.");
@@ -82,9 +82,9 @@ public class Game {
 
     public Entity createNPC() {
         ArrayList<Entity> npcList = new ArrayList<>();
-        Entity thug1 = new Warrior("Warrior", "Thug", 90, 160);
-        Entity thug2 = new Medic("Medic", "Thug", 150, 80);
-        Entity thug3 = new Archer("Archer", "Thug",80 , 150);
+        Entity thug1 = new Warrior("Warrior", "Thug", 90, 160, 50,1);
+        Entity thug2 = new Medic("Medic", "Thug", 150, 80, 30,1);
+        Entity thug3 = new Archer("Archer", "Thug",80 , 150, 20,1);
         npcList.add(thug1);
         npcList.add(thug2);
         npcList.add(thug3);
@@ -107,7 +107,7 @@ public class Game {
     }
 
     public Entity createMerchant() {
-        Entity merchant = new Merchant("merchant", Entity.createRandomName(), 100, 20);
+        Entity merchant = new Merchant("merchant", Entity.createRandomName(), 100, 20, 10, 1);
         merchant.addToInventory(createRandomItem(), 20);
         return merchant;
     }

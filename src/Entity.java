@@ -3,18 +3,25 @@ import java.util.HashMap;
 import java.util.Random;
 
 public class Entity {
+    protected int level;
     protected String type;
     protected String name;
     protected int health;
     protected int attack;
     protected int coins = 50;
+    protected int defence;
+    protected int hunger = 0;
+    protected int thirst = 0;
+    protected int xp;
     protected HashMap<String, InventorySlot> inventory = new HashMap<>();
 
-    public Entity(String type, String name, int health, int attack){
+    public Entity(String type, String name, int health, int attack, int defence, int level){
         this.type = type;
         this.name = name;
         this.health = health;
         this.attack = attack;
+        this.defence = defence;
+        this.level = level;
     }
 
     public void addToInventory(Item item, int amount){
@@ -81,6 +88,11 @@ public class Entity {
 
     public int getAttack() {
         return attack;
+    }
+    public int getDefence(){ return  defence; }
+
+    public int getLevel(){
+        return level;
     }
 
 }
