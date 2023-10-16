@@ -12,7 +12,7 @@ public class Entity {
     protected int defence;
     protected int hunger = 0;
     protected int thirst = 0;
-    protected int xp;
+    protected int xp = 0;
     protected HashMap<String, InventorySlot> inventory = new HashMap<>();
 
     public Entity(String type, String name, int health, int attack, int defence, int level){
@@ -49,6 +49,27 @@ public class Entity {
         int randomise = rand.nextInt(namesList.size());
         return namesList.get(randomise);
     }
+
+    public void levelUp(int xp){
+        if (xp >= 100){
+            level ++;
+        }
+    }
+
+    public void getState(int health){
+        if (health >= 80){
+            System.out.println("You are healthy, no need for medical attention.");
+        } else if (health <= 79 && health >=50) {
+            System.out.println("You are injured, minor medical attention is advised.");
+        }
+        else if(health <= 49 && health >0){
+            System.out.println("You are severely wounded, imminent death is likely. Medical attention is STRONGLY advised.");
+        }
+        else{
+            System.out.println("YOU DIED.");
+        }
+    }
+
 
     public HashMap<String, InventorySlot> getInventory() {
         return inventory;
@@ -89,8 +110,9 @@ public class Entity {
     public int getAttack() {
         return attack;
     }
-    public int getDefence(){ return  defence; }
-
+    public int getDefence(){
+        return  defence;
+    }
     public int getLevel(){
         return level;
     }
