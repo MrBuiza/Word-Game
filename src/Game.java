@@ -8,7 +8,7 @@ public class Game {
         Scenario dialogue = new Scenario();
         Event event = new Event();
 
-        Entity player1 = createCharacter(input);
+        Entity player = createCharacter(input);
 
         Entity npc = createNPC();
 
@@ -22,11 +22,12 @@ public class Game {
 
         event.startShop(input, player1, merchant);                              // Plays the introduction to the first shop scenario
 
-      //  showHealth(input, player1);                                           // Calling a method that shows the players health when they type "show health"
+        //  showHealth(input, player1);                                           // Calling a method that shows the players health when they type "show health"
 
         Entity npc1 = createNPC();                                              // Calling a method that creates an NPC for the main characters first fight!
 
-     //   event.useItem(player1, randomItem, input);
+        //  event.useItem(player1, randomItem, input);
+
         player1.getState(player1.getHealth());
 
         //  System.out.println(merchant.getName());

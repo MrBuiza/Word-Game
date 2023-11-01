@@ -1,7 +1,4 @@
-import java.util.HashMap;
-import java.util.InputMismatchException;
-import java.util.Random;
-import java.util.Scanner;
+import java.util.*;
 
 public class Event {
     public void startShop(Scanner input, Entity player1, Entity merchant){
