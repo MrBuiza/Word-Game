@@ -69,8 +69,8 @@ public class Event {
 
         if (confirm.equals("yes")) {
 
-            player1.addToInventory(item, amount);
-            merchant.removeFromInventory(item, amount);
+            player1.useInventory().addToInventory(item, amount);
+            merchant.useInventory().removeFromInventory(item, amount);
 
             System.out.println("You have purchased " + amount + " " + item.getItemName().toLowerCase() + "s.");
 

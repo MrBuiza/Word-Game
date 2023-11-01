@@ -1,10 +1,11 @@
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class Inventory {
-    protected ArrayList<Item> inventory;
+    protected HashMap<String, InventorySlot> inventory = new HashMap<>();
 
-    public Inventory(ArrayList<Item> inventory) {
-        this.inventory = inventory;
+    public HashMap<String, InventorySlot> getInventory() {
+        return inventory;
     }
 
     public void addToInventory(Item item, int amount) {

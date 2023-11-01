@@ -8,23 +8,23 @@ public class Game {
         Scenario dialogue = new Scenario();
         Event event = new Event();
 
-        Entity player = createCharacter(input);
+        Entity player1 = createCharacter(input);
 
         Entity npc = createNPC();
 
-        createName(input, player1);                                             // A method is called that prompts a user to create their desired hero's name
+        createName(input, player1);                                           // A method is called that prompts a user to create their desired hero's name
 
-        Entity merchant = createMerchant();                                     // Calling a method which creates and chooses a random name for a merchant name to trade with
+        Entity merchant = createMerchant();                                   // Calling a method which creates and chooses a random name for a merchant name to trade with
 
-        Item randomItem = createRandomItem();                                   // This calls a method that randomises an item for a merchant to sell
+        Item randomItem = createRandomItem();                                 // This calls a method that randomises an item for a merchant to sell
 
-        dialogue.gameIntro(player1, merchant.getName());                        // This outputs dialogue for setting the introduction of the game
+        dialogue.gameIntro(player1, merchant.getName());                      // This outputs dialogue for setting the introduction of the game
 
-        event.startShop(input, player1, merchant);                              // Plays the introduction to the first shop scenario
+        event.startShop(input, player1, merchant);                            // Plays the introduction to the first shop scenario
 
-        //  showHealth(input, player1);                                           // Calling a method that shows the players health when they type "show health"
+        //  showHealth(input, player1);                                       // Calling a method that shows the players health when they type "show health"
 
-        Entity npc1 = createNPC();                                              // Calling a method that creates an NPC for the main characters first fight!
+        Entity npc1 = createNPC();                                            // Calling a method that creates an NPC for the main characters first fight!
 
         //  event.useItem(player1, randomItem, input);
 
@@ -110,7 +110,7 @@ public class Game {
 
     public Entity createMerchant() {
         Entity merchant = new Merchant("merchant", Entity.createRandomName(), 100, 20, 10, 1);
-        merchant.addToInventory(createRandomItem(), 20);
+        merchant.useInventory().addToInventory(createRandomItem(), 20);
         return merchant;
     }
 }
