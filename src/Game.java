@@ -26,7 +26,8 @@ public class Game {
 
         Entity npc1 = createNPC();                                              // Calling a method that creates an NPC for the main characters first fight!
 
-        event.useItem(player1, randomItem, input);
+     //   event.useItem(player1, randomItem, input);
+        player1.getState(player1.getHealth());
 
         //  System.out.println(merchant.getName());
         //  System.out.println(merchant.getType());

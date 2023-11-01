@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Random;
 
-public class Entity {
+public abstract class Entity {
     protected int level;
     protected String type;
     protected String name;
@@ -12,7 +12,8 @@ public class Entity {
     protected int defence;
     protected int hunger = 0;
     protected int thirst = 0;
-    protected int xp = 0;
+    private int playerXP = 0;
+
     protected HashMap<String, InventorySlot> inventory = new HashMap<>();
 
     public Entity(String type, String name, int health, int attack, int defence, int level){
@@ -50,10 +51,12 @@ public class Entity {
         return namesList.get(randomise);
     }
 
-    public void levelUp(int xp){
-        if (xp >= 100){
-            level ++;
+    public void gainXP(int eventXp) {
+        while (eventXp >= 100) {
+            level++;
+            eventXp -= 100;
         }
+        playerXP += eventXp;
     }
 
     public void getState(int health){
