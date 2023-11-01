@@ -13,8 +13,7 @@ public abstract class Entity {
     protected int hunger = 0;
     protected int thirst = 0;
     private int playerXP = 0;
-
-    protected HashMap<String, InventorySlot> inventory = new HashMap<>();
+    private Inventory inventory = new Inventory();
 
     public Entity(String type, String name, int health, int attack, int defence, int level){
         this.type = type;
@@ -23,21 +22,6 @@ public abstract class Entity {
         this.attack = attack;
         this.defence = defence;
         this.level = level;
-    }
-
-    public void addToInventory(Item item, int amount){
-        InventorySlot currentSlot = new InventorySlot(item, amount);
-        inventory.put(item.getItemName(), currentSlot);
-    }
-
-    public void removeFromInventory(Item item, int amount){
-        if (!inventory.containsKey(item.getItemName())){
-            return;
-        }
-        InventorySlot slot = inventory.get(item.getItemName());
-        int newValue = slot.getAmount() - amount;
-        InventorySlot updatedSlot = new InventorySlot(item, newValue);
-        inventory.put(item.getItemName(), updatedSlot);
     }
 
     public static String createRandomName() {
@@ -73,9 +57,12 @@ public abstract class Entity {
         }
     }
 
+    public Inventory useInventory() {
+        return inventory;
+    }
 
     public HashMap<String, InventorySlot> getInventory() {
-        return inventory;
+        return inventory.getInventory();
     }
 
     public String getType() {
@@ -93,23 +80,18 @@ public abstract class Entity {
     public void updateCoins(int coins) {
         this.coins += coins;
     }
-
     public void setName(String name) {
         this.name = name;
     }
-
     public String getName() {
         return name;
     }
-
     public int getHealth() {
         return health;
     }
-
     public void setHealth(int health){
         this.health = health;
     }
-
     public int getAttack() {
         return attack;
     }
@@ -119,5 +101,4 @@ public abstract class Entity {
     public int getLevel(){
         return level;
     }
-
 }

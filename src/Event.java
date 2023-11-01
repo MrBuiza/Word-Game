@@ -1,7 +1,4 @@
-import java.util.HashMap;
-import java.util.InputMismatchException;
-import java.util.Random;
-import java.util.Scanner;
+import java.util.*;
 
 public class Event {
     public void startShop(Scanner input, Entity player1, Entity merchant){
@@ -72,8 +69,8 @@ public class Event {
 
         if (confirm.equals("yes")) {
 
-            player1.addToInventory(item, amount);
-            merchant.removeFromInventory(item, amount);
+            player1.useInventory().addToInventory(item, amount);
+            merchant.useInventory().removeFromInventory(item, amount);
 
             System.out.println("You have purchased " + amount + " " + item.getItemName().toLowerCase() + "s.");
 
